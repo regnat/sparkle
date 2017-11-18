@@ -23,6 +23,7 @@ haskell.lib.buildStackProject {
       which
       zlib
       zip
+      cairo
     ];
   inherit ghc;
   extraArgs = ["--extra-lib-dirs=${jvmlibdir}"];
