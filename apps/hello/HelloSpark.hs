@@ -5,6 +5,7 @@ module Main where
 
 import Control.Distributed.Closure
 import Control.Distributed.Spark as RDD
+import qualified Graphics.Rendering.Cairo as C
 import qualified Data.Text as Text
 import Data.Text (Text)
 
@@ -26,5 +27,6 @@ main = do
     bs   <- RDD.filter (closure (static f2)) rdd
     numAs <- RDD.count as
     numBs <- RDD.count bs
+    C.withImageSurface C.FormatA1 10 10 $ \s -> C.renderWith s C.save
     putStrLn $ show numAs ++ " lines with a, "
             ++ show numBs ++ " lines with b."
